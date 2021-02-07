@@ -79,19 +79,20 @@ class _ListPostsState extends State<ListPosts> {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                Container(
+                post.imageList.length>0 ? Container(
                     margin: EdgeInsets.only(
                         top: 15.0, bottom: 15.0, left: 5.0, right: 5.0),
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height * 0.3,
-                      child: Image.network(
-                        Constants.BASE_URL +
+                      child:  post.imageList.length>0 ? FadeInImage.assetNetwork(
+                        placeholder: 'assets/loading.gif',
+                        image: post.imageList.length>0 ? Constants.BASE_URL +
                             Constants.IMAGE_BASE_URL +
-                            post.imageList.first.name,
+                            post.imageList.first?.name: 'assets/loading.gif',
                         fit: BoxFit.fitWidth,
-                      ),
-                    )),
+                      ):null,
+                    )):Container(),
                 Container(
                   child: Row(
                     children: [
