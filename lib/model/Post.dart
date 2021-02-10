@@ -10,6 +10,7 @@ String postsToJson(List<Post> data) => json.encode(List<dynamic>.from(data.map((
 
 class Post {
   Post({
+    this.id,
     this.userId,
     this.userName,
     this.name,
@@ -23,6 +24,7 @@ class Post {
     this.likeCount,
   });
 
+  int id;
   int userId;
   String userName;
   String name;
@@ -37,6 +39,7 @@ class Post {
   int alreadyLiked;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
+    id: json["id"],
     userId: json["userID"],
     userName: json["userName"],
     name: json["name"],
@@ -51,6 +54,7 @@ class Post {
   );
 
   Map<String, dynamic> toJson() => {
+    "id": id,
     "userID": userId,
     "userName": userName,
     "name": name,

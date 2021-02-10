@@ -6,6 +6,8 @@ import 'dart:async';
 import '../Constants.dart';
 
 class PostDetailPage extends StatefulWidget {
+  int postID=0;
+  PostDetailPage({this.postID});
   @override
   _PostDetailPageState createState() => _PostDetailPageState();
 }
@@ -27,7 +29,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
 
   void getPost() async {
     _loading = true;
-    await PostService.getPostByID(2).then((value) {
+    await PostService.getPostByID(widget.postID).then((value) {
       setState(() {
         _post = value;
         _post.imageList.forEach((element) {
@@ -65,6 +67,10 @@ class _PostDetailPageState extends State<PostDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+        title:Text("Detaylar"),
+      ),
         // Center(child: CircularProgressIndicator(),)
         body: RefreshIndicator(
       onRefresh: () async {
@@ -81,6 +87,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   CustomScrollView customScrollView() {
     return CustomScrollView(slivers: [
       SliverAppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         expandedHeight: MediaQuery.of(context).size.height * 0.6,
         flexibleSpace: new FlexibleSpaceBar(

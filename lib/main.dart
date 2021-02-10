@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_kesingez_denemeler/pages/ListPosts.dart';
+import 'package:flutter_app_kesingez_denemeler/pages/PostDetailPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

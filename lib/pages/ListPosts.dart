@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_kesingez_denemeler/Constants.dart';
 import 'package:flutter_app_kesingez_denemeler/model/Post.dart';
+import 'package:flutter_app_kesingez_denemeler/pages/PostDetailPage.dart';
 import 'package:flutter_app_kesingez_denemeler/service/PostService.dart';
 
 class ListPosts extends StatefulWidget {
@@ -38,7 +39,13 @@ class _ListPostsState extends State<ListPosts> {
       child: ListView.builder(
           itemCount: null == _posts ? 0 : _posts.length,
           itemBuilder: (context, index) {
-            return item(_posts[index]);
+            return InkWell(
+              onTap: (){
+                print(_posts[index].userId);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetailPage(postID:_posts[index].id)));
+              },
+              child: item(_posts[index]),
+            );
           }),
     ));
   }
